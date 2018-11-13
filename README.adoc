@@ -6,7 +6,7 @@ A fully manual tiling window manager for the X window system.
 Concepts
 --------
 
-Most *manual* window managers aren't *truly* manual. They behave like a dynamic one sometimes. However, kiwmi is fully manual. It doesn't become dynamic all of a sudden.
+Most *manual* window managers aren't *truly* manual. They behave like a dynamic one sometimes. However, kiwmi is fully manual. It doesn't do this.
 
 When a window is spawned without allocating space, it's put in an invisible queue. Then you allocate space for the window; when the window is pulled from the queue, it goes into the aforementioned space. This solves the classic problem with regular window managers, where the window with a longer start time will spawn in the current tag (workspace) instead of the one in which it was opened in.
 
@@ -35,6 +35,8 @@ For the most part, configuration is done in link:config.mk[config.mk].
 . `make`
 . `sudo make install`
 
+*NOTE*: If you want to use `kiwmi` with a Display Manager, you need to manually install link:misc/kiwmi.desktop[misc/kiwmi.desktop] to `/usr/share/xsessions` either by manually moving the file or by installing `kiwmi` to `/usr` (`sudo make PREFIX=/usr install`).
+
 Contribution
 ------------
 
@@ -44,4 +46,4 @@ Future requests, bug reports and PRs are always welcome. Make sure you read the 
 
 If anything is unclear, feel free to contact me.
 
-If you don't program but want to contribute to kiwmi, spread the world about kiwmi and star the repo.
+If you don't program but want to contribute to kiwmi, spread the word about kiwmi and star the repo.
