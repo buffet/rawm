@@ -15,8 +15,6 @@
 
 #define ROOT_MASK ( XCB_EVENT_MASK_SUBSTRUCTURE_NOTIFY | XCB_EVENT_MASK_SUBSTRUCTURE_REDIRECT )
 
-static void handle_create_notify_event(xcb_create_notify_event_t *event);
-static void handle_destroy_notify_event(xcb_destroy_notify_event_t *event);
 static void handle_map_request_event(xcb_map_request_event_t *event);
 
 int g_dpy_fd;
@@ -64,28 +62,10 @@ void
 handle_xcb_event(xcb_generic_event_t *event)
 {
 	switch (event->response_type & ~0x80) {
-	case XCB_CREATE_NOTIFY:
-		handle_create_notify_event((xcb_create_notify_event_t *)event);
-		break;
-	case XCB_DESTROY_NOTIFY:
-		handle_destroy_notify_event((xcb_destroy_notify_event_t *)event);
-		break;
 	case XCB_MAP_REQUEST:
 		handle_map_request_event((xcb_map_request_event_t *)event);
 		break;
 	}
-}
-
-static void
-handle_create_notify_event(xcb_create_notify_event_t *event)
-{
-	// TODO: handle
-}
-
-static void
-handle_destroy_notify_event(xcb_destroy_notify_event_t *event)
-{
-	// TODO: handle
 }
 
 static void
