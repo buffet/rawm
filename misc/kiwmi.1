@@ -1,10 +1,10 @@
-.TH KIWMI 1 "2018 November 9" "{{VERSION}}" ""
+.TH RAWM 1 "2018 November 9" "{{VERSION}}" ""
 
 .SH NAME
-kiwmi \- fully manual tiling window manager
+rawm \- fully manual tiling window manager
 
 .SH SYNPOSIS
-.B kiwmi
+.B rawm
 .R [
 .B -h
 .R |
@@ -14,16 +14,16 @@ kiwmi \- fully manual tiling window manager
 .I CONFIG_PATH
 .R ]
 
-.B seed
+.B rawmc
 .I COMMAND
 
 .SH DESCRIPTION
 Starts the
-.B kiwmi
+.B rawm
 window manager on
 .IR DISPLAY .
 It is controlled and configured via
-.BR seed .
+.BR rawmc .
 
 A list of
 .IR COMMAND s
@@ -50,17 +50,17 @@ Print debug information
 .I CONFIG_PATH
 .RS
 Choose a different config path. Default is
-.I ${XDG_CONFIG_HOME}/kiwmi/kiwmirc
+.I ${XDG_CONFIG_HOME}/rawm/rawmrc
 .RE
 
 .SH USAGE
 Possible commands for
-.B seed
+.B rawmc
 are:
 
 .B quit
 .RS
-Quit kiwmi
+Quit rawm.
 .RE
 
 .B reload
@@ -71,9 +71,9 @@ Reload the configuration file.
 .B exec
 .I COMMAND
 .RS
-Replaces the kiwmi instance with
+Replaces the rawm instance with
 .IR COMMAND .
-This can be used to restart kiwmi after an update, for example.
+This can be used to restart rawm after an update, for example.
 .RE
 
 .SH AUTHOR

@@ -2,20 +2,20 @@ include config.mk
 
 SRCPREFIX = src
 
-KWSRC   := $(wildcard $(SRCPREFIX)/kiwmi/*.c) $(SRCPREFIX)/common.c
-KWOBJ   := $(KWSRC:.c=.o)
-KWTARGET = kiwmi
+RWMSRC   := $(wildcard $(SRCPREFIX)/rawm/*.c) $(SRCPREFIX)/common.c
+RWMOBJ   := $(RWMSRC:.c=.o)
+RWMTARGET = rawm
 
-SESRC   := $(wildcard $(SRCPREFIX)/seed/*.c) $(SRCPREFIX)/common.c
-SEOBJ   := $(SESRC:.c=.o)
-SETARGET = seed
+RCSRC   := $(wildcard $(SRCPREFIX)/rawmc/*.c) $(SRCPREFIX)/common.c
+RCOBJ   := $(RCSRC:.c=.o)
+RCTARGET = rawmc
 
-SRC      = $(KWSRC) $(SESRC)
-OBJ      = $(KWOBJ) $(SEOBJ)
+SRC      = $(RWMSRC) $(RCSRC)
+OBJ      = $(RWMOBJ) $(RCOBJ)
 DEPS     = $(OBJ:.o=.d)
-TARGETS  = $(KWTARGET) $(SETARGET)
+TARGETS  = $(RWMTARGET) $(RCTARGET)
 
-MANTARGET = kiwmi.1.gz
+MANTARGET = rawm.1.gz
 
 .PHONY: all all-nodoc doc install uninstall clean
 
@@ -23,27 +23,27 @@ all: all-nodoc doc
 
 all-nodoc: $(TARGETS)
 
-$(KWTARGET): $(KWOBJ)
+$(RWMTARGET): $(RWMOBJ)
 	$(LD) -o $@ $^ $(LDFLAGS)
 
-$(SETARGET): $(SEOBJ)
+$(RCTARGET): $(RCOBJ)
 	$(LD) -o $@ $^ $(LDFLAGS)
 
 doc: $(MANTARGET)
 
-$(MANTARGET): misc/kiwmi.1
+$(MANTARGET): misc/rawm.1
 	sed 's/{{VERSION}}/v$(VERSION)/g' $< | gzip >$@
 
-install: all misc/kiwmi.desktop
-	install -Dm755 $(KWTARGET) "$(DESTDIR)$(BINPREFIX)/$(KWTARGET)"
-	install -Dm755 $(SETARGET) "$(DESTDIR)$(BINPREFIX)/$(SETARGET)"
-	install -Dm644 misc/kiwmi.desktop "$(DESTDIR)$(XSESSIONS)/kiwmi.desktop"
+install: all misc/rawm.desktop
+	install -Dm755 $(RWMTARGET) "$(DESTDIR)$(BINPREFIX)/$(RWMTARGET)"
+	install -Dm755 $(RCTARGET) "$(DESTDIR)$(BINPREFIX)/$(RCTARGET)"
+	install -Dm644 misc/rawm.desktop "$(DESTDIR)$(XSESSIONS)/rawm.desktop"
 	install -Dm644 $(MANTARGET) "$(DESTDIR)$(MANPREFIX)/man1/$(MANTARGET)"
 
 uninstall:
-	$(RM) "$(DESTDIR)$(BINPREFIX)/$(KWTARGET)"
-	$(RM) "$(DESTDIR)$(BINPREFIX)/$(SETARGET)"
-	$(RM) "$(DESTDIR)$(XSESSIONS)/kiwmi.desktop"
+	$(RM) "$(DESTDIR)$(BINPREFIX)/$(RWMTARGET)"
+	$(RM) "$(DESTDIR)$(BINPREFIX)/$(RCTARGET)"
+	$(RM) "$(DESTDIR)$(XSESSIONS)/rawm.desktop"
 	$(RM) "$(DESTDIR)$(MANPREFIX)/man1/$(MANTARGET)"
 
 clean:

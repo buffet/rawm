@@ -10,10 +10,10 @@
 
 #include <stdnoreturn.h>
 
-#define SOCK_ENV_VAR  "KIWMI_SOCKET"
-#define SOCK_DEF_PATH "/tmp/kiwmi.sock"
+#define SOCK_ENV_VAR  "RAWM_SOCKET"
+#define SOCK_DEF_PATH "/tmp/rawm.sock"
 
-#define CONFIG_FILE "kiwmi/kiwmirc"
+#define CONFIG_FILE "rawm/rawmrc"
 
 noreturn void die(char *fmt, ...);
 void warn(char *fmt, ...);

@@ -1,5 +1,5 @@
-/kiwmi
-/seed
-/kiwmi.1.gz
+/rawm
+/rawmc
+/rawm.1.gz
 *.o
 *.d

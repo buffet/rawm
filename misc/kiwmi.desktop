@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=kiwmi
+Name=rawm
 Comment=Fully manual tiling window manager
-Exec=kiwmi
+Exec=rawm
 Type=Application
